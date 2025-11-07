@@ -127,8 +127,92 @@ const Index = () => {
         </div>
       </section>
 
+      {/* SaaS Products Section */}
+      <section className="py-20 md:py-32">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+              Nuestros Productos SaaS
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Soluciones listas para implementar que transformarán tu negocio
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* RAG System */}
+            <Card className="border-2 border-primary/30 hover:border-primary transition-all duration-300 hover:shadow-2xl overflow-hidden group">
+              <div className="h-2 bg-gradient-to-r from-primary to-accent" />
+              <CardContent className="p-10 space-y-6">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                  <Brain className="w-8 h-8 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-3xl font-bold text-foreground mb-3">Sistema RAG</h3>
+                  <p className="text-muted-foreground leading-relaxed mb-6">
+                    Plataforma de Retrieval-Augmented Generation que combina búsqueda inteligente con IA generativa para respuestas precisas basadas en tus documentos
+                  </p>
+                  <ul className="space-y-3 mb-6">
+                    <li className="flex items-start gap-2">
+                      <Sparkles className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-muted-foreground">Procesamiento de documentos en tiempo real</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Sparkles className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-muted-foreground">Respuestas contextualizadas con IA</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Sparkles className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-muted-foreground">Integración con múltiples fuentes de datos</span>
+                    </li>
+                  </ul>
+                  <Button className="w-full group-hover:scale-105 transition-transform">
+                    Conocer Más
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Real Estate Mobile App */}
+            <Card className="border-2 border-accent/30 hover:border-accent transition-all duration-300 hover:shadow-2xl overflow-hidden group">
+              <div className="h-2 bg-gradient-to-r from-accent to-primary" />
+              <CardContent className="p-10 space-y-6">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-primary flex items-center justify-center">
+                  <Code className="w-8 h-8 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-3xl font-bold text-foreground mb-3">App Inmobiliaria</h3>
+                  <p className="text-muted-foreground leading-relaxed mb-6">
+                    Aplicación móvil completa para gestión inmobiliaria con catálogo de propiedades, tours virtuales y sistema de contacto directo
+                  </p>
+                  <ul className="space-y-3 mb-6">
+                    <li className="flex items-start gap-2">
+                      <Sparkles className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-muted-foreground">Catálogo interactivo de propiedades</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Sparkles className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-muted-foreground">Búsqueda avanzada con filtros</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Sparkles className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-muted-foreground">Panel de administración integrado</span>
+                    </li>
+                  </ul>
+                  <Button className="w-full group-hover:scale-105 transition-transform">
+                    Conocer Más
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-20 md:py-32 relative overflow-hidden">
+      <section className="py-20 md:py-32 relative overflow-hidden bg-muted/30">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8">
