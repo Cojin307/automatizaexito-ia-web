@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Bot, Zap, Sparkles, ArrowRight, Code, Database, Brain } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
@@ -166,10 +167,12 @@ const Index = () => {
                       <span className="text-sm text-muted-foreground">Integración con múltiples fuentes de datos</span>
                     </li>
                   </ul>
-                  <Button className="w-full group-hover:scale-105 transition-transform">
-                    Conocer Más
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
+                  <Link to="/sistema-rag" className="block">
+                    <Button className="w-full group-hover:scale-105 transition-transform">
+                      Conocer Más
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>
@@ -200,10 +203,12 @@ const Index = () => {
                       <span className="text-sm text-muted-foreground">Panel de administración integrado</span>
                     </li>
                   </ul>
-                  <Button className="w-full group-hover:scale-105 transition-transform">
-                    Conocer Más
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
+                  <Link to="/app-inmobiliaria" className="block">
+                    <Button className="w-full group-hover:scale-105 transition-transform">
+                      Conocer Más
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>
