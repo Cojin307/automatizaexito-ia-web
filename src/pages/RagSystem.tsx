@@ -1,281 +1,141 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Brain, ArrowLeft, Check, Sparkles, Database, Zap, Shield, Code } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowLeft, Database, Brain, Search, Zap, Shield, Code, Sparkles, Check } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const RagSystem = () => {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-card">
-        <div className="container mx-auto px-4 py-6">
-          <Link to="/" className="inline-flex items-center gap-2 text-foreground hover:text-primary transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-            <span className="font-semibold">Volver al inicio</span>
-          </Link>
-        </div>
-      </header>
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Animated background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }}></div>
+      </div>
 
-      {/* Hero Section */}
-      <section className="py-20 md:py-32 relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-accent/10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-foreground mb-4">
-              <Brain className="w-5 h-5 text-primary" />
-              Sistema RAG - Retrieval-Augmented Generation
-            </div>
-            
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground">
-              Respuestas Inteligentes Basadas en <span className="text-primary">Tus Documentos</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Combina la potencia de la búsqueda semántica con inteligencia artificial generativa para obtener respuestas precisas y contextualizadas de tus propios datos
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Button size="lg" className="text-lg">
-                Solicitar Demo
-                <Sparkles className="ml-2 w-5 h-5" />
-              </Button>
-              <Button size="lg" variant="outline" className="text-lg">
-                Ver Precios
-              </Button>
-            </div>
+      <div className="container relative mx-auto px-4 py-8">
+        <Link to="/">
+          <Button variant="ghost" className="mb-6 glass-card hover-glow">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Volver al inicio
+          </Button>
+        </Link>
+
+        {/* Hero Section */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 glass-card mb-6">
+            <Brain className="w-4 h-4 text-primary animate-glow-pulse" />
+            <span className="text-sm font-medium text-primary">Inteligencia Artificial Avanzada</span>
           </div>
-        </div>
-        
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl opacity-50" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl opacity-50" />
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20 md:py-32 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              Características Principales
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Tecnología de vanguardia para transformar la forma en que interactúas con tus datos
-            </p>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-primary via-accent to-secondary-glow bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto]">
+              Sistema RAG Inteligente
+            </span>
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
+            Revoluciona la forma en que tu empresa accede y utiliza su información con tecnología de IA de última generación
+          </p>
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <Sparkles className="w-5 h-5 text-primary animate-glow-pulse" />
+            <Zap className="w-5 h-5 text-accent" />
+            <Shield className="w-5 h-5 text-secondary-glow" />
           </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="border-2 hover:border-primary/50 transition-all duration-300">
-              <CardContent className="p-8 space-y-4">
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
-                  <Database className="w-7 h-7 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground">Procesamiento Inteligente</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Analiza y procesa documentos PDF, Word, Excel y más formatos automáticamente
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 hover:border-primary/50 transition-all duration-300">
-              <CardContent className="p-8 space-y-4">
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center">
-                  <Zap className="w-7 h-7 text-accent" />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground">Búsqueda Semántica</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Encuentra información relevante por significado, no solo por palabras clave
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 hover:border-primary/50 transition-all duration-300">
-              <CardContent className="p-8 space-y-4">
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
-                  <Brain className="w-7 h-7 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground">IA Generativa</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Genera respuestas coherentes y precisas basadas en tu contenido específico
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 hover:border-primary/50 transition-all duration-300">
-              <CardContent className="p-8 space-y-4">
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center">
-                  <Shield className="w-7 h-7 text-accent" />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground">Seguridad Garantizada</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Tus datos permanecen privados y seguros con encriptación de nivel empresarial
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 hover:border-primary/50 transition-all duration-300">
-              <CardContent className="p-8 space-y-4">
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
-                  <Code className="w-7 h-7 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground">API Flexible</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Integra fácilmente con tus aplicaciones existentes mediante nuestra API REST
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 hover:border-primary/50 transition-all duration-300">
-              <CardContent className="p-8 space-y-4">
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center">
-                  <Sparkles className="w-7 h-7 text-accent" />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground">Actualizaciones en Tiempo Real</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Los cambios en tus documentos se reflejan inmediatamente en el sistema
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-20 md:py-32">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-                Beneficios para tu Negocio
-              </h2>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="space-y-6">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                      <Check className="w-5 h-5 text-primary" />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2 text-foreground">Ahorro de Tiempo</h3>
-                    <p className="text-muted-foreground">
-                      Reduce el tiempo de búsqueda de información de horas a segundos
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                      <Check className="w-5 h-5 text-primary" />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2 text-foreground">Mejora en Productividad</h3>
-                    <p className="text-muted-foreground">
-                      Tu equipo puede enfocarse en tareas de mayor valor agregado
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                      <Check className="w-5 h-5 text-primary" />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2 text-foreground">Escalabilidad</h3>
-                    <p className="text-muted-foreground">
-                      Crece sin límites con una infraestructura que se adapta a tus necesidades
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-6">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
-                      <Check className="w-5 h-5 text-accent" />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2 text-foreground">Precisión Mejorada</h3>
-                    <p className="text-muted-foreground">
-                      Obtén respuestas más precisas que las búsquedas tradicionales
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
-                      <Check className="w-5 h-5 text-accent" />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2 text-foreground">Fácil Implementación</h3>
-                    <p className="text-muted-foreground">
-                      Configuración simple y rápida, sin necesidad de conocimientos técnicos avanzados
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
-                      <Check className="w-5 h-5 text-accent" />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2 text-foreground">Soporte Multiidioma</h3>
-                    <p className="text-muted-foreground">
-                      Trabaja con documentos en múltiples idiomas sin configuraciones adicionales
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 md:py-32 relative overflow-hidden bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-              ¿Listo para revolucionar tu gestión de información?
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Solicita una demostración personalizada y descubre cómo nuestro sistema RAG puede transformar tu negocio
-            </p>
-            <Button size="lg" className="text-lg">
-              Solicitar Demo Gratuita
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="tech-gradient hover:opacity-90 shadow-lg hover:shadow-xl">
+              Solicitar Demo
               <Sparkles className="ml-2 w-5 h-5" />
+            </Button>
+            <Button size="lg" variant="outline" className="glass-card hover-glow">
+              Ver Precios
             </Button>
           </div>
         </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="bg-muted py-12 border-t border-border">
-        <div className="container mx-auto px-4">
-          <div className="text-center space-y-4">
-            <Link to="/" className="inline-block">
-              <h3 className="text-2xl font-bold text-foreground">
-                Automatiza<span className="text-primary">Éxito</span>
-              </h3>
-            </Link>
-            <p className="text-muted-foreground">
-              Soluciones tecnológicas que impulsan tu negocio hacia el futuro
-            </p>
-            <p className="text-sm text-muted-foreground pt-4">
-              © 2025 AutomatizaÉxito. Todos los derechos reservados.
-            </p>
+        {/* Features Grid */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {[
+            { icon: Database, title: "Gestión de Documentos", desc: "Procesa y organiza automáticamente todo tipo de documentos empresariales con IA avanzada", color: "primary" },
+            { icon: Brain, title: "IA Contextual", desc: "Comprende el contexto empresarial y proporciona respuestas ultra-precisas basadas en tus datos", color: "accent" },
+            { icon: Search, title: "Búsqueda Avanzada", desc: "Encuentra información relevante al instante con búsqueda semántica de última generación", color: "primary" }
+          ].map((feature, i) => (
+            <Card key={i} className="glass-card hover-glow border-primary/20 group">
+              <div className={`absolute inset-0 bg-gradient-to-br from-${feature.color}/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-lg`}></div>
+              <CardHeader className="relative">
+                <div className={`p-3 rounded-xl bg-gradient-to-br from-${feature.color} to-${feature.color}-glow w-fit mb-4 shadow-lg shadow-${feature.color}/20`}>
+                  <feature.icon className="w-8 h-8 text-white" />
+                </div>
+                <CardTitle>{feature.title}</CardTitle>
+              </CardHeader>
+              <CardContent className="relative">
+                <p className="text-muted-foreground">{feature.desc}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Technical Features */}
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
+          {[
+            { icon: Zap, title: "Procesamiento Rápido", desc: "Respuestas en milisegundos con arquitectura optimizada" },
+            { icon: Shield, title: "Seguridad Enterprise", desc: "Encriptación de grado militar para tus datos" },
+            { icon: Code, title: "API Flexible", desc: "Integración sencilla con tu stack tecnológico" },
+            { icon: Sparkles, title: "Actualizaciones Real-Time", desc: "Sincronización instantánea de cambios" }
+          ].map((feature, i) => (
+            <Card key={i} className="glass-card hover-glow border-primary/20">
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="p-2 rounded-lg bg-gradient-to-br from-primary to-accent">
+                    <feature.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold mb-1">{feature.title}</h3>
+                    <p className="text-sm text-muted-foreground">{feature.desc}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Benefits Section */}
+        <div className="glass-card hover-glow border-primary/20 p-8 mb-16">
+          <h2 className="text-3xl font-bold text-center mb-8">
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Beneficios Empresariales
+            </span>
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              "Reduce tiempo de búsqueda en un 95%",
+              "Aumenta productividad del equipo",
+              "Escala sin límites con tu negocio",
+              "Precisión superior a búsquedas tradicionales",
+              "Implementación rápida en días",
+              "Soporte multiidioma integrado"
+            ].map((benefit, i) => (
+              <div key={i} className="flex items-center gap-3">
+                <div className="p-1.5 rounded-full bg-gradient-to-br from-primary to-accent">
+                  <Check className="w-4 h-4 text-white" />
+                </div>
+                <span className="text-foreground">{benefit}</span>
+              </div>
+            ))}
           </div>
         </div>
-      </footer>
+
+        {/* CTA Section */}
+        <div className="glass-card hover-glow border-primary/20 p-12 text-center">
+          <h2 className="text-3xl font-bold mb-4">
+            ¿Listo para <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">revolucionar</span> tu gestión de información?
+          </h2>
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Solicita una demostración personalizada y descubre el poder de la IA aplicada a tus datos
+          </p>
+          <Button size="lg" className="tech-gradient hover:opacity-90 shadow-lg hover:shadow-xl">
+            Solicitar Demo Gratuita
+            <Sparkles className="ml-2 w-5 h-5" />
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };
