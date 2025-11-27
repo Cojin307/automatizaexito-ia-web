@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Database, Brain, Search, Zap, Shield, Code, Sparkles, Check, Lock, Server, FileText, TrendingUp, Users, Workflow } from "lucide-react";
+import { ArrowLeft, Database, Brain, Search, Zap, Shield, Code, Sparkles, Check, Lock, Server, FileText, TrendingUp, Users, Workflow, Image, Video, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const RagSystem = () => {
@@ -55,6 +55,31 @@ const RagSystem = () => {
           </div>
         </div>
 
+        {/* Video Demo Section */}
+        <div className="glass-card hover-glow border-primary/20 p-8 md:p-12 mb-16">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 glass-card mb-4">
+              <Video className="w-5 h-5 text-primary animate-glow-pulse" />
+              <span className="text-sm font-medium text-primary">Video Demostrativo</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Mira AutomatizaExitoRAG en Acción
+              </span>
+            </h2>
+          </div>
+          <div className="relative aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-primary/10 to-accent/10 border-2 border-primary/20 group hover:border-primary/40 transition-all">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center">
+                <div className="mx-auto w-24 h-24 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform">
+                  <Play className="w-12 h-12 text-white ml-1" />
+                </div>
+                <p className="text-muted-foreground">Video próximamente</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* What Does It Do Section */}
         <div className="glass-card hover-glow border-primary/20 p-8 md:p-12 mb-16">
           <div className="flex items-center gap-3 mb-6">
@@ -84,6 +109,42 @@ const RagSystem = () => {
                   <item.icon className="w-5 h-5 text-primary" />
                 </div>
                 <p className="text-foreground">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Product Screenshots Section */}
+        <div className="glass-card hover-glow border-primary/20 p-8 md:p-12 mb-16">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 glass-card mb-4">
+              <Image className="w-5 h-5 text-primary animate-glow-pulse" />
+              <span className="text-sm font-medium text-primary">Interfaz del Sistema</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Interfaz Intuitiva y Poderosa
+              </span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Explora la plataforma diseñada para simplificar la gestión de conocimiento empresarial
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { title: "Panel de Control", desc: "Dashboard principal con métricas en tiempo real" },
+              { title: "Gestión de Documentos", desc: "Organiza y procesa tus archivos empresariales" },
+              { title: "Chat Inteligente", desc: "Interface conversacional para consultas" },
+              { title: "Configuración Avanzada", desc: "Personaliza el comportamiento del sistema" }
+            ].map((item, i) => (
+              <div key={i} className="relative aspect-video rounded-xl overflow-hidden bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 group hover:border-primary/40 transition-all">
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                  <div className="p-4 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 mb-4">
+                    <Image className="w-12 h-12 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -288,6 +349,40 @@ const RagSystem = () => {
                   </div>
                 </CardContent>
               </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Use Cases Gallery */}
+        <div className="glass-card hover-glow border-primary/20 p-8 md:p-12 mb-16">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Casos de Uso Visuales
+              </span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Descubre cómo diferentes empresas implementan AutomatizaExitoRAG
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { title: "Sector Legal", desc: "Búsqueda instantánea de jurisprudencia" },
+              { title: "Sector Salud", desc: "Consulta de protocolos médicos" },
+              { title: "Sector Financiero", desc: "Análisis de normativas y compliance" },
+              { title: "Construcción", desc: "Acceso a especificaciones técnicas" },
+              { title: "Educación", desc: "Gestión de contenido académico" },
+              { title: "Recursos Humanos", desc: "Políticas y procedimientos internos" }
+            ].map((item, i) => (
+              <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 group hover:border-primary/40 transition-all">
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                  <div className="p-3 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 mb-3">
+                    <Image className="w-10 h-10 text-primary" />
+                  </div>
+                  <h3 className="text-base font-bold text-foreground mb-2">{item.title}</h3>
+                  <p className="text-xs text-muted-foreground">{item.desc}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
