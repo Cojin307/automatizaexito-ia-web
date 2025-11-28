@@ -352,6 +352,32 @@ const RagSystem = () => {
           </div>
         </div>
 
+        {/* Results - Compactado */}
+        <div className="glass-card hover-glow border-primary/20 p-8 md:p-12 mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Resultados Garantizados
+            </span>
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            {[
+              { icon: Zap, text: "Respuestas en menos de 3 segundos" },
+              { icon: Shield, text: "100% seguro y privado" },
+              { icon: TrendingUp, text: "Reduce costos hasta 60%" },
+              { icon: Sparkles, text: "Aumenta productividad 3x" },
+              { icon: Lock, text: "Control total de tu información" },
+              { icon: Database, text: "Escala sin límites" }
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3 p-4 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20">
+                <div className="p-2 rounded-lg bg-gradient-to-br from-primary to-accent flex-shrink-0">
+                  <item.icon className="w-5 h-5 text-white" />
+                </div>
+                <span className="font-semibold text-foreground text-sm">{item.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Pricing Section */}
         <div className="glass-card hover-glow border-primary/20 p-8 md:p-12 mb-16">
           <div className="text-center mb-10">
@@ -437,32 +463,6 @@ const RagSystem = () => {
             <p className="text-sm text-muted-foreground">
               Incluye: Configuración, migración de documentos, capacitación y soporte inicial
             </p>
-          </div>
-        </div>
-
-        {/* Results - Compactado */}
-        <div className="glass-card hover-glow border-primary/20 p-8 md:p-12 mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Resultados Garantizados
-            </span>
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {[
-              { icon: Zap, text: "Respuestas en menos de 3 segundos" },
-              { icon: Shield, text: "100% seguro y privado" },
-              { icon: TrendingUp, text: "Reduce costos hasta 60%" },
-              { icon: Sparkles, text: "Aumenta productividad 3x" },
-              { icon: Lock, text: "Control total de tu información" },
-              { icon: Database, text: "Escala sin límites" }
-            ].map((item, i) => (
-              <div key={i} className="flex items-center gap-3 p-4 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20">
-                <div className="p-2 rounded-lg bg-gradient-to-br from-primary to-accent flex-shrink-0">
-                  <item.icon className="w-5 h-5 text-white" />
-                </div>
-                <span className="font-semibold text-foreground text-sm">{item.text}</span>
-              </div>
-            ))}
           </div>
         </div>
 
