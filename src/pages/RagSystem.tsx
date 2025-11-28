@@ -93,60 +93,6 @@ const RagSystem = () => {
           </div>
         </div>
 
-        {/* Comparación ChatGPT vs Nuestra Solución */}
-        <div className="glass-card hover-glow border-primary/20 p-8 md:p-12 mb-16">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                ¿Por qué no usar ChatGPT directamente?
-              </span>
-            </h2>
-          </div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-primary/20">
-                  <th className="text-left p-4 font-bold text-foreground">Característica</th>
-                  <th className="text-center p-4 font-bold text-foreground">ChatGPT Público</th>
-                  <th className="text-center p-4 font-bold text-primary">AutomatizaExitoRAG</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { feature: "Privacidad total de datos", chatgpt: false, ours: true },
-                  { feature: "Entrenado con tus documentos", chatgpt: false, ours: true },
-                  { feature: "Control de accesos por usuario", chatgpt: false, ours: true },
-                  { feature: "Almacenamiento local/nube privada", chatgpt: false, ours: true },
-                  { feature: "Anti-alucinación garantizado", chatgpt: false, ours: true },
-                  { feature: "Cumplimiento normativo (LFPDPPP)", chatgpt: false, ours: true },
-                  { feature: "Integración con sistemas internos", chatgpt: false, ours: true },
-                  { feature: "Auditoría y trazabilidad", chatgpt: false, ours: true },
-                  { feature: "Soporte empresarial en México", chatgpt: false, ours: true }
-                ].map((row, i) => (
-                  <tr key={i} className="border-b border-primary/10 hover:bg-primary/5 transition-colors">
-                    <td className="p-4 text-foreground">{row.feature}</td>
-                    <td className="p-4 text-center">
-                      {row.chatgpt ? (
-                        <Check className="w-6 h-6 text-primary mx-auto" />
-                      ) : (
-                        <X className="w-6 h-6 text-destructive mx-auto" />
-                      )}
-                    </td>
-                    <td className="p-4 text-center">
-                      {row.ours ? (
-                        <Check className="w-6 h-6 text-primary mx-auto" />
-                      ) : (
-                        <X className="w-6 h-6 text-muted-foreground mx-auto" />
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
         {/* What Does It Do - Simplificado */}
         <div className="glass-card hover-glow border-primary/20 p-8 md:p-12 mb-16">
           <div className="flex items-center gap-3 mb-6">
@@ -349,6 +295,60 @@ const RagSystem = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Comparación ChatGPT vs Nuestra Solución */}
+        <div className="glass-card hover-glow border-primary/20 p-8 md:p-12 mb-16">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                ¿Por qué no usar ChatGPT directamente?
+              </span>
+            </h2>
+          </div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-primary/20">
+                  <th className="text-left p-4 font-bold text-foreground">Característica</th>
+                  <th className="text-center p-4 font-bold text-foreground">ChatGPT Público</th>
+                  <th className="text-center p-4 font-bold text-primary">AutomatizaExitoRAG</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { feature: "Privacidad total de datos", chatgpt: false, ours: true },
+                  { feature: "Entrenado con tus documentos", chatgpt: false, ours: true },
+                  { feature: "Control de accesos por usuario", chatgpt: false, ours: true },
+                  { feature: "Almacenamiento local/nube privada", chatgpt: false, ours: true },
+                  { feature: "Anti-alucinación garantizado", chatgpt: false, ours: true },
+                  { feature: "Cumplimiento normativo (LFPDPPP)", chatgpt: false, ours: true },
+                  { feature: "Integración con sistemas internos", chatgpt: false, ours: true },
+                  { feature: "Auditoría y trazabilidad", chatgpt: false, ours: true },
+                  { feature: "Soporte empresarial en México", chatgpt: false, ours: true }
+                ].map((row, i) => (
+                  <tr key={i} className="border-b border-primary/10 hover:bg-primary/5 transition-colors">
+                    <td className="p-4 text-foreground">{row.feature}</td>
+                    <td className="p-4 text-center">
+                      {row.chatgpt ? (
+                        <Check className="w-6 h-6 text-primary mx-auto" />
+                      ) : (
+                        <X className="w-6 h-6 text-destructive mx-auto" />
+                      )}
+                    </td>
+                    <td className="p-4 text-center">
+                      {row.ours ? (
+                        <Check className="w-6 h-6 text-primary mx-auto" />
+                      ) : (
+                        <X className="w-6 h-6 text-muted-foreground mx-auto" />
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
 
