@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code2, Smartphone, Sparkles, Zap, Shield, Bot, Code, Database, Brain, ArrowRight } from "lucide-react";
+import { Code2, Smartphone, Sparkles, Zap, Shield, Bot, Code, Database, Brain, ArrowRight, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
+import ChatWidget from "@/components/ChatWidget";
+import AppointmentDialog from "@/components/AppointmentDialog";
 
 const Index = () => {
   return (
@@ -35,18 +37,25 @@ const Index = () => {
           <Sparkles className="w-5 h-5 text-secondary-glow" />
         </div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="tech-gradient hover:opacity-90 transition-all shadow-lg hover:shadow-xl group">
-            Comienza Ahora
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Button>
-          <Button size="lg" variant="outline" className="glass-card hover-glow">
+          <AppointmentDialog>
+            <Button size="lg" className="tech-gradient hover:opacity-90 transition-all shadow-lg hover:shadow-xl group">
+              Comienza Ahora
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </AppointmentDialog>
+          <Button 
+            size="lg" 
+            variant="outline" 
+            className="glass-card hover-glow"
+            onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+          >
             Conoce Más
           </Button>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="container relative mx-auto px-4 py-16">
+      <section id="services" className="container relative mx-auto px-4 py-16">
         <h2 className="text-4xl font-bold text-center mb-4">
           <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             Nuestros Servicios
@@ -188,10 +197,12 @@ const Index = () => {
           <p className="text-xl text-muted-foreground mb-8">
             Déjanos ayudarte a transformar tu negocio con soluciones tecnológicas de vanguardia
           </p>
-          <Button size="lg" className="tech-gradient hover:opacity-90 shadow-lg hover:shadow-xl group">
-            Solicita una Consulta Gratuita
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Button>
+          <AppointmentDialog>
+            <Button size="lg" className="tech-gradient hover:opacity-90 shadow-lg hover:shadow-xl group">
+              Solicita una Consulta Gratuita
+              <Calendar className="ml-2 w-5 h-5" />
+            </Button>
+          </AppointmentDialog>
         </div>
       </section>
 
@@ -211,6 +222,9 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* Chat Widget */}
+      <ChatWidget />
     </div>
   );
 };
