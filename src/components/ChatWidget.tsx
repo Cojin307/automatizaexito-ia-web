@@ -2,10 +2,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { MessageCircle, X, Send, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { cn } from "@/lib/utils";
@@ -13,7 +14,6 @@ import { CalendarIcon } from "lucide-react";
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [step, setStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
   
@@ -21,74 +21,46 @@ const ChatWidget = () => {
     name: "",
     birthDate: undefined as Date | undefined,
     email: "",
-    phone: ""
+    phone: "",
+    message: ""
   });
 
   const handleInputChange = (field: string, value: string | Date | undefined) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const validateStep = () => {
-    switch (step) {
-      case 1:
-        if (!formData.name.trim()) {
-          toast({ title: "Por favor ingresa tu nombre", variant: "destructive" });
-          return false;
-        }
-        break;
-      case 2:
-        if (!formData.birthDate) {
-          toast({ title: "Por favor selecciona tu fecha de nacimiento", variant: "destructive" });
-          return false;
-        }
-        break;
-      case 3:
-        if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-          toast({ title: "Por favor ingresa un correo válido", variant: "destructive" });
-          return false;
-        }
-        break;
-      case 4:
-        if (!formData.phone.trim() || formData.phone.length < 10) {
-          toast({ title: "Por favor ingresa un número de celular válido", variant: "destructive" });
-          return false;
-        }
-        break;
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.name.trim()) {
+      toast({ title: "Por favor ingresa tu nombre", variant: "destructive" });
+      return;
     }
-    return true;
-  };
-
-  const handleNext = () => {
-    if (validateStep()) {
-      if (step < 4) {
-        setStep(step + 1);
-      } else {
-        handleSubmit();
-      }
+    if (!formData.birthDate) {
+      toast({ title: "Por favor selecciona tu fecha de nacimiento", variant: "destructive" });
+      return;
     }
-  };
+    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      toast({ title: "Por favor ingresa un correo válido", variant: "destructive" });
+      return;
+    }
+    if (!formData.phone.trim() || formData.phone.length < 10) {
+      toast({ title: "Por favor ingresa un número de celular válido", variant: "destructive" });
+      return;
+    }
 
-  const handleSubmit = () => {
     console.log("Datos del formulario:", formData);
     setIsSubmitted(true);
     toast({
-      title: "¡Gracias por contactarnos!",
+      title: "¡Mensaje enviado!",
       description: "Nos pondremos en contacto contigo pronto."
     });
   };
 
   const resetForm = () => {
-    setFormData({ name: "", birthDate: undefined, email: "", phone: "" });
-    setStep(1);
+    setFormData({ name: "", birthDate: undefined, email: "", phone: "", message: "" });
     setIsSubmitted(false);
   };
-
-  const questions = [
-    { label: "¿Cuál es tu nombre?", field: "name", placeholder: "Tu nombre completo" },
-    { label: "¿Cuál es tu fecha de nacimiento?", field: "birthDate" },
-    { label: "¿Cuál es tu correo electrónico?", field: "email", placeholder: "correo@ejemplo.com" },
-    { label: "¿Cuál es tu número de celular?", field: "phone", placeholder: "+52 123 456 7890" }
-  ];
 
   return (
     <>
@@ -114,108 +86,112 @@ const ChatWidget = () => {
           {/* Header */}
           <div className="bg-gradient-to-r from-primary to-accent p-4">
             <h3 className="text-white font-bold text-lg">¡Hola! 👋</h3>
-            <p className="text-white/80 text-sm">Cuéntanos sobre ti</p>
+            <p className="text-white/80 text-sm">¿Tienes alguna pregunta? Escríbenos</p>
           </div>
 
           {/* Content */}
-          <div className="p-4 min-h-[280px]">
+          <div className="p-4 max-h-[70vh] overflow-y-auto">
             {isSubmitted ? (
-              <div className="flex flex-col items-center justify-center h-full py-8 text-center">
+              <div className="flex flex-col items-center justify-center py-8 text-center">
                 <div className="p-4 rounded-full bg-green-500/20 mb-4">
                   <CheckCircle className="w-12 h-12 text-green-500" />
                 </div>
                 <h4 className="text-xl font-bold mb-2">¡Gracias {formData.name}!</h4>
                 <p className="text-muted-foreground mb-4">
-                  Hemos recibido tu información. Te contactaremos pronto.
+                  Hemos recibido tu mensaje. Te contactaremos pronto.
                 </p>
                 <Button variant="outline" onClick={resetForm}>
                   Enviar otro mensaje
                 </Button>
               </div>
             ) : (
-              <div className="space-y-4">
-                {/* Progress indicator */}
-                <div className="flex gap-1 mb-4">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div
-                      key={i}
-                      className={cn(
-                        "flex-1 h-1 rounded-full transition-colors",
-                        i <= step ? "bg-primary" : "bg-muted"
-                      )}
-                    />
-                  ))}
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <div className="space-y-1.5">
+                  <Label htmlFor="chat-name" className="text-sm">Nombre</Label>
+                  <Input
+                    id="chat-name"
+                    placeholder="Tu nombre completo"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange("name", e.target.value)}
+                    className="h-9"
+                  />
                 </div>
 
-                {/* Question */}
-                <div className="space-y-3">
-                  <Label className="text-base font-medium">
-                    {questions[step - 1].label}
-                  </Label>
-
-                  {step === 2 ? (
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <Button
-                          variant="outline"
-                          className={cn(
-                            "w-full justify-start text-left font-normal",
-                            !formData.birthDate && "text-muted-foreground"
-                          )}
-                        >
-                          <CalendarIcon className="mr-2 h-4 w-4" />
-                          {formData.birthDate ? (
-                            format(formData.birthDate, "PPP", { locale: es })
-                          ) : (
-                            <span>Selecciona una fecha</span>
-                          )}
-                        </Button>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0" align="start">
-                        <Calendar
-                          mode="single"
-                          selected={formData.birthDate}
-                          onSelect={(date) => handleInputChange("birthDate", date)}
-                          disabled={(date) =>
-                            date > new Date() || date < new Date("1900-01-01")
-                          }
-                          initialFocus
-                          className="pointer-events-auto"
-                        />
-                      </PopoverContent>
-                    </Popover>
-                  ) : (
-                    <Input
-                      type={step === 3 ? "email" : step === 4 ? "tel" : "text"}
-                      placeholder={questions[step - 1].placeholder}
-                      value={formData[questions[step - 1].field as keyof typeof formData] as string || ""}
-                      onChange={(e) => handleInputChange(questions[step - 1].field, e.target.value)}
-                      onKeyDown={(e) => e.key === "Enter" && handleNext()}
-                      className="h-12"
-                    />
-                  )}
+                <div className="space-y-1.5">
+                  <Label className="text-sm">Fecha de nacimiento</Label>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button
+                        variant="outline"
+                        className={cn(
+                          "w-full justify-start text-left font-normal h-9",
+                          !formData.birthDate && "text-muted-foreground"
+                        )}
+                      >
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {formData.birthDate ? (
+                          format(formData.birthDate, "PPP", { locale: es })
+                        ) : (
+                          <span>Selecciona una fecha</span>
+                        )}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={formData.birthDate}
+                        onSelect={(date) => handleInputChange("birthDate", date)}
+                        disabled={(date) =>
+                          date > new Date() || date < new Date("1900-01-01")
+                        }
+                        initialFocus
+                        className="pointer-events-auto"
+                      />
+                    </PopoverContent>
+                  </Popover>
                 </div>
 
-                {/* Navigation */}
-                <div className="flex gap-2 pt-4">
-                  {step > 1 && (
-                    <Button
-                      variant="outline"
-                      onClick={() => setStep(step - 1)}
-                      className="flex-1"
-                    >
-                      Atrás
-                    </Button>
-                  )}
-                  <Button
-                    onClick={handleNext}
-                    className="flex-1 tech-gradient"
-                  >
-                    {step === 4 ? "Enviar" : "Siguiente"}
-                    <Send className="w-4 h-4 ml-2" />
-                  </Button>
+                <div className="space-y-1.5">
+                  <Label htmlFor="chat-email" className="text-sm">Correo electrónico</Label>
+                  <Input
+                    id="chat-email"
+                    type="email"
+                    placeholder="correo@ejemplo.com"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
+                    className="h-9"
+                  />
                 </div>
-              </div>
+
+                <div className="space-y-1.5">
+                  <Label htmlFor="chat-phone" className="text-sm">Número de celular</Label>
+                  <Input
+                    id="chat-phone"
+                    type="tel"
+                    placeholder="+52 123 456 7890"
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange("phone", e.target.value)}
+                    className="h-9"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <Label htmlFor="chat-message" className="text-sm">Tu mensaje (opcional)</Label>
+                  <Textarea
+                    id="chat-message"
+                    placeholder="Escribe tu pregunta, duda o comentario..."
+                    value={formData.message}
+                    onChange={(e) => handleInputChange("message", e.target.value)}
+                    rows={3}
+                    className="resize-none"
+                  />
+                </div>
+
+                <Button type="submit" className="w-full tech-gradient mt-4">
+                  Enviar mensaje
+                  <Send className="w-4 h-4 ml-2" />
+                </Button>
+              </form>
             )}
           </div>
         </div>
