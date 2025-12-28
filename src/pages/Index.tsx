@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code2, Smartphone, Sparkles, Zap, Shield, Bot, Code, Database, Brain, ArrowRight, Calendar } from "lucide-react";
+import { Code2, Smartphone, Sparkles, Zap, Shield, Bot, Code, Brain, ArrowRight, Calendar, LineChart, Lightbulb } from "lucide-react";
 import { Link } from "react-router-dom";
 import ChatWidget from "@/components/ChatWidget";
 import AppointmentDialog from "@/components/AppointmentDialog";
@@ -66,23 +66,25 @@ const Index = () => {
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {[
-            { icon: Bot, title: "Automatización con IA", desc: "Implementamos inteligencia artificial avanzada para automatizar y optimizar procesos", color: "primary" },
-            { icon: Code, title: "Desarrollo Web", desc: "Aplicaciones web modernas y escalables con las últimas tecnologías", color: "accent" },
-            { icon: Zap, title: "Optimización de Procesos", desc: "Mejoramos flujos de trabajo para maximizar eficiencia empresarial", color: "primary" },
-            { icon: Brain, title: "Machine Learning", desc: "Modelos de aprendizaje automático para predicciones y análisis avanzados", color: "accent" },
-            { icon: Database, title: "Integración de Sistemas", desc: "Conectamos tus herramientas en un ecosistema unificado", color: "primary" },
-            { icon: Sparkles, title: "Consultoría Tecnológica", desc: "Asesoramiento experto en transformación digital", color: "accent" }
+            { icon: Bot, title: "Automatización con IA", desc: "Implementamos inteligencia artificial avanzada para automatizar y optimizar procesos", color: "primary", link: "/servicios/automatizacion-ia" },
+            { icon: Code, title: "Desarrollo Web", desc: "Aplicaciones web modernas y escalables con las últimas tecnologías", color: "accent", link: "/servicios/desarrollo-web" },
+            { icon: LineChart, title: "Optimización de Procesos", desc: "Mejoramos flujos de trabajo para maximizar eficiencia empresarial", color: "primary", link: "/servicios/optimizacion-procesos" },
+            { icon: Brain, title: "Machine Learning", desc: "Modelos de aprendizaje automático para predicciones y análisis avanzados", color: "accent", link: "/servicios/machine-learning" },
+            { icon: Smartphone, title: "Desarrollo de Apps Móviles", desc: "Aplicaciones móviles nativas e híbridas para iOS y Android", color: "primary", link: "/servicios/apps-moviles" },
+            { icon: Lightbulb, title: "Consultoría Tecnológica", desc: "Asesoramiento experto en transformación digital", color: "accent", link: "/servicios/consultoria-tecnologica" }
           ].map((service, i) => (
-            <Card key={i} className="glass-card hover-glow border-primary/20 group relative overflow-hidden">
-              <div className={`absolute inset-0 bg-gradient-to-br from-${service.color}/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity`}></div>
-              <CardContent className="p-6 relative">
-                <div className={`p-3 rounded-xl bg-gradient-to-br from-${service.color} to-${service.color}-glow w-fit mb-4 shadow-lg shadow-${service.color}/20`}>
-                  <service.icon className="w-7 h-7 text-white" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                <p className="text-sm text-muted-foreground">{service.desc}</p>
-              </CardContent>
-            </Card>
+            <Link key={i} to={service.link}>
+              <Card className="glass-card hover-glow border-primary/20 group relative overflow-hidden cursor-pointer h-full">
+                <div className={`absolute inset-0 bg-gradient-to-br from-${service.color}/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity`}></div>
+                <CardContent className="p-6 relative">
+                  <div className={`p-3 rounded-xl bg-gradient-to-br from-${service.color} to-${service.color}-glow w-fit mb-4 shadow-lg shadow-${service.color}/20`}>
+                    <service.icon className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                  <p className="text-sm text-muted-foreground">{service.desc}</p>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
       </section>
